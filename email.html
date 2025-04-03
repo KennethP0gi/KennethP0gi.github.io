@@ -3,179 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Form</title>
+    <title>Simple Contact Form</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
             margin: 0;
-            padding: 0;
+            padding: 20px;
         }
         .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
+            max-width: 400px;
+            margin: auto;
             background-color: #ffffff;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         h2 {
             text-align: center;
-            color: #333;
         }
-        label {
-            font-size: 1.1em;
-            color: #555;
-            margin-bottom: 8px;
-            display: inline-block;
-        }
-        input, select, textarea {
+        input, select, textarea, button {
             width: 100%;
+            margin: 8px 0;
             padding: 10px;
-            margin: 10px 0;
+            font-size: 16px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            font-size: 1em;
-            box-sizing: border-box;
-        }
-        textarea {
-            resize: vertical;
         }
         button {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 20px;
             border: none;
-            border-radius: 4px;
             cursor: pointer;
-            font-size: 1.1em;
-            width: 100%;
         }
         button:hover {
             background-color: #45a049;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            font-weight: bold;
-        }
-        .form-group select, .form-group textarea {
-            font-size: 1.1em;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Contact Us</h2>
-        <form action="https://formsubmit.co/it@cptechphils.com" method="post">
-            <input type="hidden" name="_subject" value="New Message from Contact Us Form">
-
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name" required>
-            </div>
-
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="you@example.com" required>
-            </div>
-
-            <div class="form-group">
-                <label for="subject">Subject:</label>
-                <select id="subject" name="subject" required onchange="toggleCategory()">
-                    <option value="" selected disabled>Choose</option>
-                    <option value="IT Concern">IT Concern</option>
-                    <option value="Safety Concern">Safety Concern</option>
-                    <option value="Other">Other</option>
-                </select>
-                <input type="text" id="subjectOther" name="subjectOther" placeholder="Specify other subject" style="display: none; margin-top: 10px;">
-            </div>
-
-            <!-- IT Concern Categories -->
-            <div id="itCategoryDiv" style="display: none;">
-                <div class="form-group">
-                    <label for="itCategory">Category:</label>
-                    <select id="itCategory" name="category" onchange="toggleOtherInput('it')" required>
-                        <option value="" selected disabled>Choose IT Category</option>
-                        <option value="PC Problem">PC Problem</option>
-                        <option value="Telephone Problem">Telephone Problem</option>
-                        <option value="Internet Problem">Internet Problem</option>
-                        <option value="Application Problem">Application Problem</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    <input type="text" id="itOther" name="itOther" placeholder="Specify other IT problem" style="display: none; margin-top: 10px;">
-                </div>
-            </div>
-
-            <!-- Safety Concern Categories -->
-            <div id="safetyCategoryDiv" style="display: none;">
-                <div class="form-group">
-                    <label for="safetyCategory">Category:</label>
-                    <select id="safetyCategory" name="category" onchange="toggleOtherInput('safety')" required>
-                        <option value="" selected disabled>Choose Safety Category</option>
-                        <option value="Health Concern">Health Concern</option>
-                        <option value="Medical Concern">Medical Concern</option>
-                        <option value="PPE">PPE</option>
-                        <option value="Chemical">Chemical</option>
-                        <option value="Physical">Physical</option>
-                        <option value="Biological">Biological</option>
-                        <option value="Ergonomic">Ergonomic</option>
-                        <option value="Psychosocial">Psychosocial</option>
-                        <option value="Safety Hazards">Safety Hazards</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    <input type="text" id="safetyOther" name="safetyOther" placeholder="Specify other safety concern" style="display: none; margin-top: 10px;">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" placeholder="Type your message here..." rows="4" required></textarea>
-                <input type="text" id="messageOther" name="messageOther" placeholder="Specify additional details" style="display: none; margin-top: 10px;">
-            </div>
-
+        <form action="https://formsubmit.co/it@cptechphils.com" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <select name="subject" required>
+                <option value="" disabled selected>Choose Subject</option>
+                <option value="IT Concern">IT Concern</option>
+                <option value="Safety Concern">Safety Concern</option>
+                <option value="Other">Other</option>
+            </select>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
             <button type="submit">Send</button>
         </form>
     </div>
-
-    <script>
-        function toggleCategory() {
-            var subject = document.getElementById("subject").value;
-            var itCategoryDiv = document.getElementById("itCategoryDiv");
-            var safetyCategoryDiv = document.getElementById("safetyCategoryDiv");
-            var subjectOther = document.getElementById("subjectOther");
-
-            // Show/hide based on selected subject
-            if (subject === "IT Concern") {
-                itCategoryDiv.style.display = "block";
-                safetyCategoryDiv.style.display = "none";
-                subjectOther.style.display = "none";
-            } else if (subject === "Safety Concern") {
-                safetyCategoryDiv.style.display = "block";
-                itCategoryDiv.style.display = "none";
-                subjectOther.style.display = "none";
-            } else if (subject === "Other") {
-                subjectOther.style.display = "block";
-                itCategoryDiv.style.display = "none";
-                safetyCategoryDiv.style.display = "none";
-            } else {
-                itCategoryDiv.style.display = "none";
-                safetyCategoryDiv.style.display = "none";
-                subjectOther.style.display = "none";
-            }
-        }
-
-        function toggleOtherInput(type) {
-            var otherInput = document.getElementById(type + "Other");
-            var select = document.getElementById(type + "Category");
-
-            if (select.value === "Other") {
-                otherInput.style.display = "block";
-            } else {
-                otherInput.style.display = "none";
-            }
-        }
-    </script>
 </body>
 </html>
