@@ -47,13 +47,36 @@
         <form action="https://formsubmit.co/it@cptechphils.com" method="POST">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="email" name="email" placeholder="Your Email" required>
-            <select name="subject" required>
+            
+            <select id="subject" name="subject" required>
                 <option value="" disabled selected>Choose Subject</option>
                 <option value="IT Concern">IT Concern</option>
                 <option value="Safety Concern">Safety Concern</option>
                 <option value="Other">Other</option>
             </select>
+
+            <select id="category" name="category" required>
+                <option value="" disabled selected>Choose Category</option>
+                <option value="PC Problem">PC Problem</option>
+                <option value="Telephone Problem">Telephone Problem</option>
+                <option value="Internet Problem">Internet Problem</option>
+                <option value="Application Problem">Application Problem</option>
+                <option value="Health Concern">Health Concern</option>
+                <option value="Medical Concern">Medical Concern</option>
+                <option value="PPE">PPE</option>
+                <option value="Chemical">Chemical</option>
+                <option value="Physical">Physical</option>
+                <option value="Biological">Biological</option>
+                <option value="Ergonomic">Ergonomic</option>
+                <option value="Psychosocial">Psychosocial</option>
+                <option value="Safety Hazards">Safety Hazards</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <input type="text" id="otherDetails" name="otherDetails" placeholder="Other details (if applicable)">
+            
             <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            
             <button type="submit">Send</button>
         </form>
     </div>
