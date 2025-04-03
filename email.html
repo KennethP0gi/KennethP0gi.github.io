@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1em;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-group select, .form-group textarea {
+            font-size: 1.1em;
+        }
+    </style>
+    <script>
+        function toggleCategory() {
+            var subject = document.getElementById("subject").value;
+            var itCategoryDiv = document.getElementById("itCategoryDiv");
+            var safetyCategoryDiv = document.getElementById("safetyCategoryDiv");
+            
+            // Show/hide based on selected subject
+            if (subject === "IT Concern") {
+                itCategoryDiv.style.display = "block";
+                safetyCategoryDiv.style.display = "none";
+            } else if (subject === "Safety Concern") {
+                safetyCategoryDiv.style.display = "block";
+                itCategoryDiv.style.display = "none";
+            } else {
+                itCategoryDiv.style.display = "none";
+                safetyCategoryDiv.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Contact Us</h2>
+        <form action="https://formsubmit.co/it@cptechphils.com" method="post" enctype="text/plain">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <select id="subject" name="subject" required onchange="toggleCategory()">
+                    <option value="" selected disabled>Choose</option>
+                    <option value="IT Concern">IT Concern</option>
+                    <option value="Safety Concern">Safety Concern</option>
+                </select>
+            </div>
+            
+            <!-- IT Concern Categories -->
+            <div id="itCategoryDiv" style="display: none;">
+                <div class="form-group">
+                    <label for="itCategory">Category:</label>
+                    <select id="itCategory" name="itCategory">
+                        <option value="PC Problem">PC Problem</option>
+                        <option value="Telephone Problem">Telephone Problem</option>
+                        <option value="Internet Problem">Internet Problem</option>
+                        <option value="Application Problem">Application Problem</option>
+                        <option value="Other technical Problem">Other technical Problem</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Safety Concern Categories -->
+            <div id="safetyCategoryDiv" style="display: none;">
+                <div class="form-group">
+                    <label for="safetyCategory">Category:</label>
+                    <select id="safetyCategory" name="safetyCategory">
+                        <option value="Health Concern">Health Concern</option>
+                        <option value="Medical Concern">Medical Concern</option>
+                        <option value="PPE">PPE</option>
+                        <option value="Chemical">Chemical</option>
+                        <option value="Physical">Physical</option>
+                        <option value="Biological">Biological</option>
+                        <option value="Ergonomic">Ergonomic</option>
+                        <option value="Psychosocial">Psychosocial</option>
+                        <option value="Safety Hazards">Safety Hazards</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</body>
+</html>
